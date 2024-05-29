@@ -1,5 +1,6 @@
 package com.example.microservicio_notas_referencia.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,6 +50,32 @@ public class NotasReferenciaController {
     public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaEntity nuevo){
         notasReferenciaRepository.save(nuevo);
         return "Ok";
+    }
+    @PutMapping("/{id}")
+    public @ResponseBody String actualizarNotaReferencia(@PathVariable Integer id, @RequestBody NotasReferenciaEntity actualizada) {
+        return notasReferenciaRepository.findById(id)
+                .map(notaReferencia -> {
+                    notaReferencia.setDatosClinicos(actualizada.getDatosClinicos());
+                    notaReferencia.setDatosIngreso(actualizada.getDatosIngreso());
+                    notaReferencia.setDatosEgreso(actualizada.getDatosEgreso());
+                    notaReferencia.setCondicionesPacienteMomentoTransferencia(actualizada.getCondicionesPacienteMomentoTransferencia());
+                    notaReferencia.setInformeProcedimientosRealizados(actualizada.getInformeProcedimientosRealizados());
+                    notaReferencia.setTratamientoEfectuado(actualizada.getTratamientoEfectuado());
+                    notaReferencia.setTratamientoPersistePaciente(actualizada.getTratamientoPersistePaciente());
+                    notaReferencia.setFechaVencimiento(actualizada.getFechaVencimiento());
+                    notaReferencia.setAdvertenciasFactoresRiesgo(actualizada.getAdvertenciasFactoresRiesgo());
+                    notaReferencia.setComentarioAdicional(actualizada.getComentarioAdicional());
+                    notaReferencia.setMonitoreo(actualizada.getMonitoreo());
+                    notaReferencia.setInformeTrabajoSocial(actualizada.getInformeTrabajoSocial());
+                    notaReferencia.setIdHistoriaClinica(actualizada.getIdHistoriaClinica());
+                    notaReferencia.setIdMedico(actualizada.getIdMedico());
+                    notaReferencia.setUpdatedAt(new Date());
+                    notasReferenciaRepository.save(notaReferencia);
+                    return "Historia clínica actualizada con éxito";
+                })
+                .orElseGet(() -> {
+                    return "Error en la actualizacion";
+                });
     }
 
 }
