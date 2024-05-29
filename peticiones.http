@@ -1,0 +1,45 @@
+
+###
+GET http://localhost:8094/api/microservicio-notas-referencia/manage/health
+
+
+###
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/1
+
+###
+GET http://localhost:8092/api/microservicio-recetas/recetas
+
+
+###
+GET http://localhost:8092/api/microservicio-recetas/recetas/paciente/1
+
+###
+GET http://localhost:8092/api/microservicio-recetas/recetas/info-container
+
+###
+POST http://localhost:8092/api/microservicio-recetas/recetas
+Content-Type: application/json
+
+{
+    "nombreGenericoMedicamentoPreescrito":"",
+    "viaCuidadoEspecialesAdministracion":"",
+    "concentracionDosificacion":"",
+    "frecuenciaAdministracion24hrs":"",
+    "idMedico":2,
+    "idHistoriaClinica":1
+}
+###
+PUT http://localhost:8092/api/microservicio-recetas/recetas/1
+Content-Type: application/json
+
+{
+    "nombreGenericoMedicamentoPreescrito":"actualizado",
+    "viaCuidadoEspecialesAdministracion":"",
+    "concentracionDosificacion":"",
+    "frecuenciaAdministracion24hrs":"",
+    "idMedico":2,
+    "idHistoriaClinica":1
+}
+
+###
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/detalle-historia-paciente

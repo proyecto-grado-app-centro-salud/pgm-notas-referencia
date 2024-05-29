@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.microservicio_notas_referencia.model.NotasReferenciaEntity;
+import com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto;
 import com.example.microservicio_notas_referencia.repository.NotasReferenciaRepository;
 import com.example.microservicio_notas_referencia.service.ContainerMetadataService;
+import com.example.microservicio_notas_referencia.service.NotasReferenciaService;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -32,50 +34,41 @@ public class NotasReferenciaController {
 
     @Autowired
     private ContainerMetadataService containerMetadataService;
+
+    @Autowired
+    private NotasReferenciaService notasReferenciaService;
     
+    // @GetMapping("/{idNotaReferencia}")
+    // public @ResponseBody NotasReferenciaEntity obtenerDetalleNotaReferencia(@PathVariable int idNotaReferencia) {
+    //     return notasReferenciaRepository.findById(idNotaReferencia)
+    //     .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error en la peticion"));
+    // }
     @GetMapping("/{idNotaReferencia}")
-    public @ResponseBody NotasReferenciaEntity obtenerDetalleNotaReferencia(@PathVariable int idNotaReferencia) {
-        return notasReferenciaRepository.findById(idNotaReferencia)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error en la peticion"));
+    public NotasReferenciaDto obtenerDetalleNotaReferencia(@RequestParam int id) {
+        return notasReferenciaRepository.buscarNotaReferenciaPorId(id);
     }
+    
     @GetMapping()
-    public @ResponseBody List<NotasReferenciaEntity> obtenerTodasNotasReferencia() {
-        return notasReferenciaRepository.findAll();
+    public @ResponseBody List<NotasReferenciaDto> obtenerTodasNotasReferencia() {
+        return notasReferenciaRepository.buscarNotasReferencia();
     }
+    // @GetMapping("/detalle-historia-paciente")
+    // public @ResponseBody List<NotasReferenciaDto> obtenerTodasNotasReferenciaDetalleHistoriaPaciente() {
+    //     return notasReferenciaRepository.buscarNotasReferencia();
+    // }
     @GetMapping("/paciente/{idPaciente}")
-    public @ResponseBody List<NotasReferenciaEntity> obtenerNotasReferenciaPaciente(@PathVariable int idNotaReferencia) {
-        return null;
+    public @ResponseBody List<NotasReferenciaEntity> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente) {
+        return notasReferenciaRepository.buscarNotasReferenciaPacientePorId(idPaciente);
     }
     @PostMapping()
-    public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaEntity nuevo){
-        notasReferenciaRepository.save(nuevo);
-        return "Ok";
+    public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
+        NotasReferenciaDto notasReferenciaDto=notasReferenciaService.guardarNotaReferencia(nuevo);
+        return "Ok";        
     }
     @PutMapping("/{id}")
-    public @ResponseBody String actualizarNotaReferencia(@PathVariable Integer id, @RequestBody NotasReferenciaEntity actualizada) {
-        return notasReferenciaRepository.findById(id)
-                .map(notaReferencia -> {
-                    notaReferencia.setDatosClinicos(actualizada.getDatosClinicos());
-                    notaReferencia.setDatosIngreso(actualizada.getDatosIngreso());
-                    notaReferencia.setDatosEgreso(actualizada.getDatosEgreso());
-                    notaReferencia.setCondicionesPacienteMomentoTransferencia(actualizada.getCondicionesPacienteMomentoTransferencia());
-                    notaReferencia.setInformeProcedimientosRealizados(actualizada.getInformeProcedimientosRealizados());
-                    notaReferencia.setTratamientoEfectuado(actualizada.getTratamientoEfectuado());
-                    notaReferencia.setTratamientoPersistePaciente(actualizada.getTratamientoPersistePaciente());
-                    notaReferencia.setFechaVencimiento(actualizada.getFechaVencimiento());
-                    notaReferencia.setAdvertenciasFactoresRiesgo(actualizada.getAdvertenciasFactoresRiesgo());
-                    notaReferencia.setComentarioAdicional(actualizada.getComentarioAdicional());
-                    notaReferencia.setMonitoreo(actualizada.getMonitoreo());
-                    notaReferencia.setInformeTrabajoSocial(actualizada.getInformeTrabajoSocial());
-                    notaReferencia.setIdHistoriaClinica(actualizada.getIdHistoriaClinica());
-                    notaReferencia.setIdMedico(actualizada.getIdMedico());
-                    notaReferencia.setUpdatedAt(new Date());
-                    notasReferenciaRepository.save(notaReferencia);
-                    return "Historia clínica actualizada con éxito";
-                })
-                .orElseGet(() -> {
-                    return "Error en la actualizacion";
-                });
+    public @ResponseBody String actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
+        NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
+        return  "Ok";
     }
 
 }

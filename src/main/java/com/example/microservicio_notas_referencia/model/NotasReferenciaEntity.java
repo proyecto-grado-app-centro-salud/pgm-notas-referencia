@@ -4,9 +4,12 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -67,11 +70,15 @@ public class NotasReferenciaEntity {
     @Column(name = "informe_trabajo_social")
     private String informeTrabajoSocial;
 
-    @Column(name = "id_historia_clinica")
-    private int idHistoriaClinica;
+    // @Column(name = "id_historia_clinica")
+    // private String idHistoriaClinica;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_historia_clinica", nullable = false)
+    private HistoriaClinicaEntity historiaClinica;
 
-    @Column(name = "id_medico")
-    private int idMedico;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_medico", nullable = false)
+    private MedicoEntity medico;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
