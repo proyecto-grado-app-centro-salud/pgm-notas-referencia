@@ -9,6 +9,4 @@ import com.example.microservicio_notas_referencia.model.MedicoEntity;
 
 
 public interface MedicoRepository extends JpaRepository<MedicoEntity, Integer>{
-    Optional<MedicoEntity> findByEmail(String email);
-
 }

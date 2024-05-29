@@ -9,5 +9,4 @@ import com.example.microservicio_notas_referencia.model.HistoriaClinicaEntity;
 
 
 public interface HistoriaClinicaRepository extends JpaRepository<HistoriaClinicaEntity, Integer> {
-    List<HistoriaClinicaEntity> findByIdPaciente(int idPaciente);
 }

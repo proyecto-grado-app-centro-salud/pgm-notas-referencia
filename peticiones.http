@@ -7,7 +7,7 @@ GET http://localhost:8094/api/microservicio-notas-referencia/manage/health
 GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/1
 
 ###
-GET http://localhost:8092/api/microservicio-recetas/recetas
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia
 
 
 ###

@@ -43,32 +43,36 @@ public class NotasReferenciaController {
     //     return notasReferenciaRepository.findById(idNotaReferencia)
     //     .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error en la peticion"));
     // }
-    @GetMapping("/{idNotaReferencia}")
-    public NotasReferenciaDto obtenerDetalleNotaReferencia(@RequestParam int id) {
-        return notasReferenciaRepository.buscarNotaReferenciaPorId(id);
-    }
+
+     // @GetMapping("/detalle-historia-paciente")
+    // public @ResponseBody List<NotasReferenciaDto> obtenerTodasNotasReferenciaDetalleHistoriaPaciente() {
+    //     return notasReferenciaRepository.buscarNotasReferencia();
+    // }
+
     
+    // @GetMapping("/{idNotaReferencia}")
+    // public Object obtenerDetalleNotaReferencia(@RequestParam int id) {
+    //     return notasReferenciaRepository.buscarNotaReferenciaPorId(id);
+    // }
+    // @GetMapping("/paciente/{idPaciente}")
+    // public @ResponseBody List<Object> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente) {
+    //     return notasReferenciaRepository.buscarNotasReferenciaPacientePorId(idPaciente);
+    // }
     @GetMapping()
     public @ResponseBody List<NotasReferenciaDto> obtenerTodasNotasReferencia() {
         return notasReferenciaRepository.buscarNotasReferencia();
     }
-    // @GetMapping("/detalle-historia-paciente")
-    // public @ResponseBody List<NotasReferenciaDto> obtenerTodasNotasReferenciaDetalleHistoriaPaciente() {
-    //     return notasReferenciaRepository.buscarNotasReferencia();
+   
+
+    // @PostMapping()
+    // public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
+    //     NotasReferenciaDto notasReferenciaDto=notasReferenciaService.guardarNotaReferencia(nuevo);
+    //     return "Ok";        
     // }
-    @GetMapping("/paciente/{idPaciente}")
-    public @ResponseBody List<NotasReferenciaEntity> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente) {
-        return notasReferenciaRepository.buscarNotasReferenciaPacientePorId(idPaciente);
-    }
-    @PostMapping()
-    public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
-        NotasReferenciaDto notasReferenciaDto=notasReferenciaService.guardarNotaReferencia(nuevo);
-        return "Ok";        
-    }
-    @PutMapping("/{id}")
-    public @ResponseBody String actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
-        NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
-        return  "Ok";
-    }
+    // @PutMapping("/{id}")
+    // public @ResponseBody String actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
+    //     NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
+    //     return  "Ok";
+    // }
 
 }

@@ -61,5 +61,5 @@ public class MedicoEntity {
     private String grupoSanguineo;
 
     @OneToMany(mappedBy = "medico", fetch = FetchType.LAZY)
-    private List<NotasReferenciaEntity> referencias;
+    private List<NotasReferenciaEntity> NotasReferenciaEntity;
 }

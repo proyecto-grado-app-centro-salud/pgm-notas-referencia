@@ -29,6 +29,7 @@ public class NotasReferenciaDto {
         this.idHistoriaClinica=notaGuardada.getHistoriaClinica().getIdHistoriaClinica();
         this.idMedico=notaGuardada.getMedico().getIdMedico();
     }
+    private int idNotaReferencia;
     private String datosClinicos;
     private String datosIngreso;
     private String datosEgreso;
@@ -44,6 +45,31 @@ public class NotasReferenciaDto {
     private int idHistoriaClinica;
     private String ciPropietario;
     private String pacientePropietario;
+    private int idPropietario;
     private int idMedico;
+    public NotasReferenciaDto(Integer idNotaReferencia, String datosClinicos, String datosIngreso, String datosEgreso,
+            String condicionesPacienteMomentoTransferencia, String informeProcedimientosRealizados,
+            String tratamientoEfectuado, String tratamientoPersistePaciente, Date fechaVencimiento,
+            String advertenciasFactoresRiesgo, String comentarioAdicional, String monitoreo,
+            String informeTrabajoSocial,int idHistoriaClinica,String ciPropietario,String nombres,int idPaciente,int idMedico) {
+        this.idNotaReferencia = idNotaReferencia;
+        this.datosClinicos = datosClinicos;
+        this.datosIngreso = datosIngreso;
+        this.datosEgreso = datosEgreso;
+        this.condicionesPacienteMomentoTransferencia = condicionesPacienteMomentoTransferencia;
+        this.informeProcedimientosRealizados = informeProcedimientosRealizados;
+        this.tratamientoEfectuado = tratamientoEfectuado;
+        this.tratamientoPersistePaciente = tratamientoPersistePaciente;
+        this.fechaVencimiento = fechaVencimiento;
+        this.advertenciasFactoresRiesgo = advertenciasFactoresRiesgo;
+        this.comentarioAdicional = comentarioAdicional;
+        this.monitoreo = monitoreo;
+        this.informeTrabajoSocial = informeTrabajoSocial;
+        this.idHistoriaClinica=idHistoriaClinica;
+        this.ciPropietario=ciPropietario;
+        this.pacientePropietario=nombres;
+        this.idPropietario=idPaciente;
+        this.idMedico=idMedico;
+    }
     
 }
