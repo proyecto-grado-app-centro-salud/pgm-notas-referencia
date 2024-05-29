@@ -25,18 +25,18 @@ public class NotasReferenciaService {
 
     public NotasReferenciaDto guardarNotaReferencia(NotasReferenciaDto notasReferenciaDto){
         NotasReferenciaEntity notasReferenciaEntity=new NotasReferenciaEntity();
-        notasReferenciaEntity.setDatosClinicos(notasReferenciaEntity.getDatosClinicos());
-        notasReferenciaEntity.setDatosIngreso(notasReferenciaEntity.getDatosIngreso());
-        notasReferenciaEntity.setDatosEgreso(notasReferenciaEntity.getDatosEgreso());
-        notasReferenciaEntity.setCondicionesPacienteMomentoTransferencia(notasReferenciaEntity.getCondicionesPacienteMomentoTransferencia());
-        notasReferenciaEntity.setInformeProcedimientosRealizados(notasReferenciaEntity.getInformeProcedimientosRealizados());
-        notasReferenciaEntity.setTratamientoEfectuado(notasReferenciaEntity.getTratamientoEfectuado());
-        notasReferenciaEntity.setTratamientoPersistePaciente(notasReferenciaEntity.getTratamientoPersistePaciente());
-        notasReferenciaEntity.setFechaVencimiento(notasReferenciaEntity.getFechaVencimiento());
-        notasReferenciaEntity.setAdvertenciasFactoresRiesgo(notasReferenciaEntity.getAdvertenciasFactoresRiesgo());
-        notasReferenciaEntity.setComentarioAdicional(notasReferenciaEntity.getComentarioAdicional());
-        notasReferenciaEntity.setMonitoreo(notasReferenciaEntity.getMonitoreo());
-        notasReferenciaEntity.setInformeTrabajoSocial(notasReferenciaEntity.getInformeTrabajoSocial());
+        notasReferenciaEntity.setDatosClinicos(notasReferenciaDto.getDatosClinicos());
+        notasReferenciaEntity.setDatosIngreso(notasReferenciaDto.getDatosIngreso());
+        notasReferenciaEntity.setDatosEgreso(notasReferenciaDto.getDatosEgreso());
+        notasReferenciaEntity.setCondicionesPacienteMomentoTransferencia(notasReferenciaDto.getCondicionesPacienteMomentoTransferencia());
+        notasReferenciaEntity.setInformeProcedimientosRealizados(notasReferenciaDto.getInformeProcedimientosRealizados());
+        notasReferenciaEntity.setTratamientoEfectuado(notasReferenciaDto.getTratamientoEfectuado());
+        notasReferenciaEntity.setTratamientoPersistePaciente(notasReferenciaDto.getTratamientoPersistePaciente());
+        notasReferenciaEntity.setFechaVencimiento(notasReferenciaDto.getFechaVencimiento());
+        notasReferenciaEntity.setAdvertenciasFactoresRiesgo(notasReferenciaDto.getAdvertenciasFactoresRiesgo());
+        notasReferenciaEntity.setComentarioAdicional(notasReferenciaDto.getComentarioAdicional());
+        notasReferenciaEntity.setMonitoreo(notasReferenciaDto.getMonitoreo());
+        notasReferenciaEntity.setInformeTrabajoSocial(notasReferenciaDto.getInformeTrabajoSocial());
         HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findById(notasReferenciaDto.getIdHistoriaClinica()).orElseThrow();
         notasReferenciaEntity.setHistoriaClinica(historiaClinicaEntity);
         MedicoEntity medicoEntity=medicoRepository.findById(notasReferenciaDto.getIdMedico()).orElseThrow();

@@ -11,35 +11,54 @@ GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia
 
 
 ###
-GET http://localhost:8092/api/microservicio-recetas/recetas/paciente/1
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/paciente/1
 
 ###
-GET http://localhost:8092/api/microservicio-recetas/recetas/info-container
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/info-container
 
 ###
-POST http://localhost:8092/api/microservicio-recetas/recetas
+POST http://localhost:8094/api/microservicio-notas-referencia/notas-referencia
 Content-Type: application/json
 
 {
-    "nombreGenericoMedicamentoPreescrito":"",
-    "viaCuidadoEspecialesAdministracion":"",
-    "concentracionDosificacion":"",
-    "frecuenciaAdministracion24hrs":"",
-    "idMedico":2,
-    "idHistoriaClinica":1
-}
+      "datosClinicos": "Paciente con fractura de tibia.",
+      "datosIngreso": "Ingresado después de accidente automovilístico.",
+      "datosEgreso": "Egresado después de cirugía de reducción abierta y fijación interna.",
+      "condicionesPacienteMomentoTransferencia": "Estable, con yeso en la pierna.",
+      "informeProcedimientosRealizados": "Cirugía de reducción abierta y fijación interna.",
+      "tratamientoEfectuado": "Analgesia postoperatoria y antibióticos.",
+      "tratamientoPersistePaciente": "Rehabilitación y fisioterapia.",
+      "fechaVencimiento": "2024-11-20",
+      "advertenciasFactoresRiesgo": "Evitar apoyar peso en la pierna por 6 semanas.",
+      "comentarioAdicional": "Revisar en consulta externa en 10 días.",
+      "monitoreo": "Control de dolor y signos de infección cada 8 horas.",
+      "informeTrabajoSocial": "Paciente vive con familia que le brindará apoyo en la recuperación.",
+      "idHistoriaClinica": 1,
+      "ciPropietario":"89327889",
+      "pacientePropietario":"Juan Tellez",
+      "idMedico": 1
+    }
 ###
-PUT http://localhost:8092/api/microservicio-recetas/recetas/1
+PUT http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/1
 Content-Type: application/json
 
 {
-    "nombreGenericoMedicamentoPreescrito":"actualizado",
-    "viaCuidadoEspecialesAdministracion":"",
-    "concentracionDosificacion":"",
-    "frecuenciaAdministracion24hrs":"",
-    "idMedico":2,
-    "idHistoriaClinica":1
-}
-
+      "datosClinicos": "Paciente con fractura de tibia.",
+      "datosIngreso": "Ingresado después de accidente automovilístico.",
+      "datosEgreso": "Egresado después de cirugía de reducción abierta y fijación interna.",
+      "condicionesPacienteMomentoTransferencia": "Estable, con yeso en la pierna.",
+      "informeProcedimientosRealizados": "Cirugía de reducción abierta y fijación interna.",
+      "tratamientoEfectuado": "Analgesia postoperatoria y antibióticos.",
+      "tratamientoPersistePaciente": "Rehabilitación y fisioterapia.",
+      "fechaVencimiento": "2024-11-20",
+      "advertenciasFactoresRiesgo": "Evitar apoyar peso en la pierna por 6 semanas.",
+      "comentarioAdicional": "Revisar en consulta externa en 10 días.",
+      "monitoreo": "Control de dolor y signos de infección cada 8 horas.",
+      "informeTrabajoSocial": "Paciente vive con familia que le brindará apoyo en la recuperación.",
+      "idHistoriaClinica": 103,
+      "ciPropietario":"89327889",
+      "pacientePropietario":"Juan Tellez",
+      "idMedico": 3
+    }
 ###
 GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/detalle-historia-paciente

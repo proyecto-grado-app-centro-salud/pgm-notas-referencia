@@ -50,29 +50,29 @@ public class NotasReferenciaController {
     // }
 
     
-    // @GetMapping("/{idNotaReferencia}")
-    // public Object obtenerDetalleNotaReferencia(@RequestParam int id) {
-    //     return notasReferenciaRepository.buscarNotaReferenciaPorId(id);
-    // }
-    // @GetMapping("/paciente/{idPaciente}")
-    // public @ResponseBody List<Object> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente) {
-    //     return notasReferenciaRepository.buscarNotasReferenciaPacientePorId(idPaciente);
-    // }
+    @GetMapping("/{idNotaReferencia}")
+    public @ResponseBody NotasReferenciaDto obtenerDetalleNotaReferencia(@PathVariable int idNotaReferencia) {
+        return notasReferenciaRepository.buscarNotaReferenciaPorId(idNotaReferencia);
+    }
+    @GetMapping("/paciente/{idPaciente}")
+    public @ResponseBody List<NotasReferenciaDto> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente) {
+        return notasReferenciaRepository.buscarNotasReferenciaPacientePorId(idPaciente);
+    }
     @GetMapping()
     public @ResponseBody List<NotasReferenciaDto> obtenerTodasNotasReferencia() {
         return notasReferenciaRepository.buscarNotasReferencia();
     }
    
 
-    // @PostMapping()
-    // public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
-    //     NotasReferenciaDto notasReferenciaDto=notasReferenciaService.guardarNotaReferencia(nuevo);
-    //     return "Ok";        
-    // }
-    // @PutMapping("/{id}")
-    // public @ResponseBody String actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
-    //     NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
-    //     return  "Ok";
-    // }
+    @PostMapping()
+    public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
+        NotasReferenciaDto notasReferenciaDto=notasReferenciaService.guardarNotaReferencia(nuevo);
+        return "Ok";        
+    }
+    @PutMapping("/{id}")
+    public @ResponseBody String actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
+        NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
+        return  "Ok";
+    }
 
 }
