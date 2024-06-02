@@ -47,11 +47,14 @@ public class NotasReferenciaDto {
     private String pacientePropietario;
     private int idPropietario;
     private int idMedico;
+    private Date createdAt;
+    private Date updatedAt;
     public NotasReferenciaDto(Integer idNotaReferencia, String datosClinicos, String datosIngreso, String datosEgreso,
             String condicionesPacienteMomentoTransferencia, String informeProcedimientosRealizados,
             String tratamientoEfectuado, String tratamientoPersistePaciente, Date fechaVencimiento,
             String advertenciasFactoresRiesgo, String comentarioAdicional, String monitoreo,
-            String informeTrabajoSocial,int idHistoriaClinica,String ciPropietario,String nombres,int idPaciente,int idMedico) {
+            String informeTrabajoSocial,int idHistoriaClinica,String ciPropietario,String nombres,int idPaciente,int idMedico,
+            Date createdAt,Date updatedAt) {
         this.idNotaReferencia = idNotaReferencia;
         this.datosClinicos = datosClinicos;
         this.datosIngreso = datosIngreso;
@@ -70,6 +73,8 @@ public class NotasReferenciaDto {
         this.pacientePropietario=nombres;
         this.idPropietario=idPaciente;
         this.idMedico=idMedico;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
     }
     
 }

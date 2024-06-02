@@ -65,9 +65,9 @@ public class NotasReferenciaController {
    
 
     @PostMapping()
-    public @ResponseBody String registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
+    public @ResponseBody NotasReferenciaDto registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
         NotasReferenciaDto notasReferenciaDto=notasReferenciaService.guardarNotaReferencia(nuevo);
-        return "Ok";        
+        return notasReferenciaDto;        
     }
     @PutMapping("/{id}")
     public @ResponseBody String actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {

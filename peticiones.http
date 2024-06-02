@@ -34,8 +34,6 @@ Content-Type: application/json
       "monitoreo": "Control de dolor y signos de infección cada 8 horas.",
       "informeTrabajoSocial": "Paciente vive con familia que le brindará apoyo en la recuperación.",
       "idHistoriaClinica": 1,
-      "ciPropietario":"89327889",
-      "pacientePropietario":"Juan Tellez",
       "idMedico": 1
     }
 ###
