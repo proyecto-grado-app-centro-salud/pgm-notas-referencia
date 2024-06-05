@@ -62,6 +62,8 @@ public class NotasReferenciaService {
         notaReferencia.setInformeTrabajoSocial(actualizada.getInformeTrabajoSocial());
         MedicoEntity medicoEntity=medicoRepository.findById(actualizada.getIdMedico()).orElseThrow();
         notaReferencia.setMedico(medicoEntity);
+        HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findById(actualizada.getIdHistoriaClinica()).orElseThrow();
+        notaReferencia.setHistoriaClinica(historiaClinicaEntity);
         notaReferencia.setUpdatedAt(new Date());
         NotasReferenciaEntity nuevo = notasReferenciaRepository.save(notaReferencia);
         return new NotasReferenciaDto(nuevo);

@@ -37,11 +37,11 @@ Content-Type: application/json
       "idMedico": 1
     }
 ###
-PUT http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/1
+PUT http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/5
 Content-Type: application/json
 
 {
-      "datosClinicos": "Paciente con fractura de tibia.",
+      "datosClinicos": "Paciente con fractura de tibia. actualizado",
       "datosIngreso": "Ingresado después de accidente automovilístico.",
       "datosEgreso": "Egresado después de cirugía de reducción abierta y fijación interna.",
       "condicionesPacienteMomentoTransferencia": "Estable, con yeso en la pierna.",
@@ -53,9 +53,7 @@ Content-Type: application/json
       "comentarioAdicional": "Revisar en consulta externa en 10 días.",
       "monitoreo": "Control de dolor y signos de infección cada 8 horas.",
       "informeTrabajoSocial": "Paciente vive con familia que le brindará apoyo en la recuperación.",
-      "idHistoriaClinica": 103,
-      "ciPropietario":"89327889",
-      "pacientePropietario":"Juan Tellez",
+      "idHistoriaClinica": 2,
       "idMedico": 3
     }
 ###

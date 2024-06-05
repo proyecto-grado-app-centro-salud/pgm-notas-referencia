@@ -70,9 +70,9 @@ public class NotasReferenciaController {
         return notasReferenciaDto;        
     }
     @PutMapping("/{id}")
-    public @ResponseBody String actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
+    public @ResponseBody NotasReferenciaDto actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
         NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
-        return  "Ok";
+        return  notasReferenciaDto;
     }
 
 }
