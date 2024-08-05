@@ -53,8 +53,8 @@ Content-Type: application/json
       "comentarioAdicional": "Revisar en consulta externa en 10 días.",
       "monitoreo": "Control de dolor y signos de infección cada 8 horas.",
       "informeTrabajoSocial": "Paciente vive con familia que le brindará apoyo en la recuperación.",
-      "idHistoriaClinica": 2,
-      "idMedico": 3
+      "idHistoriaClinica": 1,
+      "idMedico": 1
     }
 ###
 GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/detalle-historia-paciente

@@ -60,6 +60,14 @@ public class HistoriaClinicaEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_paciente", nullable = false)
     private PacienteEntity paciente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_medico", nullable = false)
+    private MedicoEntity medico;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_especialidad", nullable = false)
+    private EspecialidadesEntity especialidad;
     // @Column(name = "id_paciente")
     // private int idPaciente;
     @OneToMany(mappedBy = "historiaClinica", fetch = FetchType.LAZY)
