@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.microservicio_notas_referencia.model.HistoriaClinicaEntity;
-import com.example.microservicio_notas_referencia.model.MedicoEntity;
 import com.example.microservicio_notas_referencia.model.NotasReferenciaEntity;
+import com.example.microservicio_notas_referencia.model.UsuarioEntity;
 import com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto;
 import com.example.microservicio_notas_referencia.repository.HistoriaClinicaRepository;
-import com.example.microservicio_notas_referencia.repository.MedicoRepository;
 import com.example.microservicio_notas_referencia.repository.NotasReferenciaRepository;
+import com.example.microservicio_notas_referencia.repository.UsuariosRepositoryJPA;
 
 @Service
 public class NotasReferenciaService {
     @Autowired
     HistoriaClinicaRepository historiaClinicaRepository;
     @Autowired
-    MedicoRepository medicoRepository;
+    UsuariosRepositoryJPA usuarioRepositoryJPA;
     @Autowired
     NotasReferenciaRepository notasReferenciaRepository;
 
@@ -39,7 +39,7 @@ public class NotasReferenciaService {
         notasReferenciaEntity.setInformeTrabajoSocial(notasReferenciaDto.getInformeTrabajoSocial());
         HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findById(notasReferenciaDto.getIdHistoriaClinica()).orElseThrow();
         notasReferenciaEntity.setHistoriaClinica(historiaClinicaEntity);
-        MedicoEntity medicoEntity=medicoRepository.findById(notasReferenciaDto.getIdMedico()).orElseThrow();
+        UsuarioEntity medicoEntity=usuarioRepositoryJPA.findById(notasReferenciaDto.getIdMedico()).orElseThrow();
         notasReferenciaEntity.setMedico(medicoEntity);
         NotasReferenciaEntity notaGuardada=notasReferenciaRepository.save(notasReferenciaEntity);
         return new NotasReferenciaDto(notaGuardada);
@@ -60,7 +60,7 @@ public class NotasReferenciaService {
         notaReferencia.setComentarioAdicional(actualizada.getComentarioAdicional());
         notaReferencia.setMonitoreo(actualizada.getMonitoreo());
         notaReferencia.setInformeTrabajoSocial(actualizada.getInformeTrabajoSocial());
-        MedicoEntity medicoEntity=medicoRepository.findById(actualizada.getIdMedico()).orElseThrow();
+        UsuarioEntity medicoEntity=usuarioRepositoryJPA.findById(actualizada.getIdMedico()).orElseThrow();
         notaReferencia.setMedico(medicoEntity);
         HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findById(actualizada.getIdHistoriaClinica()).orElseThrow();
         notaReferencia.setHistoriaClinica(historiaClinicaEntity);

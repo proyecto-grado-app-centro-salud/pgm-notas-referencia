@@ -78,7 +78,7 @@ public class NotasReferenciaEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_medico", nullable = false)
-    private MedicoEntity medico;
+    private UsuarioEntity medico;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)

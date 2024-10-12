@@ -27,7 +27,7 @@ public class NotasReferenciaDto {
         this.monitoreo=notaGuardada.getMonitoreo();
         this.informeTrabajoSocial=notaGuardada.getInformeTrabajoSocial();
         this.idHistoriaClinica=notaGuardada.getHistoriaClinica().getIdHistoriaClinica();
-        this.idMedico=notaGuardada.getMedico().getIdMedico();
+        this.idMedico=notaGuardada.getMedico().getIdUsuario();
     }
     private int idNotaReferencia;
     private String datosClinicos;
