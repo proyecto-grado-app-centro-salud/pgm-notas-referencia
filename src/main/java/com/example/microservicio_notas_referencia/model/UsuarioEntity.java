@@ -1,7 +1,6 @@
 package com.example.microservicio_notas_referencia.model;
 
-import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,8 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -25,18 +23,56 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @AllArgsConstructor
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name = "especialidades")
-public class EspecialidadesEntity{
+@Table(name = "usuarios")
+public class UsuarioEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_especialidad")
-    private int idEspecialidad;
-    @Column(name = "nombre")
-    private String nombre;
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Column(name = "fecha_creacion")
-    private Date fechaCreacion;
+    @Column(name = "id_usuario")
+    private int idUsuario;
+
+    @Column(name = "nombres")
+    private String nombres;
+
+    @Column(name = "ci")
+    private String ci;
+
+    @Column(name = "direccion")
+    private String direccion;
+
+    @Column(name = "celular")
+    private String celular;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "grupo_sanguineo")
+    private String grupoSanguineo;
+
+    @Column(name = "apellido_paterno")
+    private String apellidoPaterno;
+
+    @Column(name = "apellido_materno")
+    private String apellidoMaterno;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fecha_nacimiento")
+    private Date fechaNacimiento;
+
+    @Column(name = "sexo")
+    private String sexo;
+
+    @Column(name = "estado_civil")
+    private String estadoCivil;
+
+    @Column(name = "edad")
+    private Integer edad;
+
+    @Column(name = "dias_sancion_peticion_ficha_presencial")
+    private Integer diasSancionPeticionFichaPresencial;
+
+    @Column(name = "telefono")
+    private String telefono;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -50,18 +86,18 @@ public class EspecialidadesEntity{
     @Column(name = "deleted_at")
     private Date deletedAt;
 
-    
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
         updatedAt = new Date();
     }
+
     @PreUpdate
     protected void onUpdate() {
         updatedAt = new Date();
     }
+
     public void markAsDeleted() {
         deletedAt = new Date();
     }
-
 }

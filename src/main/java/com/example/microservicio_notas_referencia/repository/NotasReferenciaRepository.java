@@ -14,8 +14,7 @@ public interface NotasReferenciaRepository extends JpaRepository<NotasReferencia
     //                "FROM notas_referencia nr " +
     //                "INNER JOIN historias_clinicas hc ON hc.id_historia_clinica = nr.id_historia_clinica " +
     //                "INNER JOIN pacientes p ON p.id_paciente = hc.id_paciente", nativeQuery = true)
-    @Query("SELECT new com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto(" +
-           "nr.idNotaReferencia, nr.datosClinicos, nr.datosIngreso, nr.datosEgreso, nr.condicionesPacienteMomentoTransferencia,nr.informeProcedimientosRealizados,nr.tratamientoEfectuado,nr.tratamientoPersistePaciente,nr.fechaVencimiento,nr.advertenciasFactoresRiesgo,nr.comentarioAdicional,nr.monitoreo,nr.informeTrabajoSocial,hc.idHistoriaClinica,p.ci,p.nombres,p.idPaciente,nr.medico.idMedico,nr.createdAt,nr.updatedAt) " +
+    @Query("SELECT new com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto(nr)" +
            "FROM NotasReferenciaEntity nr " +
            "INNER JOIN nr.historiaClinica hc " +
            "INNER JOIN hc.paciente p")
@@ -27,19 +26,17 @@ public interface NotasReferenciaRepository extends JpaRepository<NotasReferencia
     //        "INNER JOIN pacientes p ON p.id_paciente = hc.id_paciente ")
     // List<Object> buscarNotasReferencia();
 
-    @Query("SELECT new com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto(" +
-    "nr.idNotaReferencia, nr.datosClinicos, nr.datosIngreso, nr.datosEgreso, nr.condicionesPacienteMomentoTransferencia,nr.informeProcedimientosRealizados,nr.tratamientoEfectuado,nr.tratamientoPersistePaciente,nr.fechaVencimiento,nr.advertenciasFactoresRiesgo,nr.comentarioAdicional,nr.monitoreo,nr.informeTrabajoSocial,hc.idHistoriaClinica,p.ci,p.nombres,p.idPaciente,nr.medico.idMedico,nr.createdAt,nr.updatedAt) " +
+    @Query("SELECT new com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto(nr) " +
     "FROM NotasReferenciaEntity nr " +
     "INNER JOIN nr.historiaClinica hc " +
     "INNER JOIN hc.paciente p "+
     "WHERE nr.idNotaReferencia = ?1")
     NotasReferenciaDto buscarNotaReferenciaPorId(int id);
 
-    @Query("SELECT new com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto(" +
-    "nr.idNotaReferencia, nr.datosClinicos, nr.datosIngreso, nr.datosEgreso, nr.condicionesPacienteMomentoTransferencia,nr.informeProcedimientosRealizados,nr.tratamientoEfectuado,nr.tratamientoPersistePaciente,nr.fechaVencimiento,nr.advertenciasFactoresRiesgo,nr.comentarioAdicional,nr.monitoreo,nr.informeTrabajoSocial,hc.idHistoriaClinica,p.ci,p.nombres,p.idPaciente,nr.medico.idMedico,nr.createdAt,nr.updatedAt) " +
+    @Query("SELECT new com.example.microservicio_notas_referencia.model.dto.NotasReferenciaDto(nr) " +
     "FROM NotasReferenciaEntity nr " +
     "INNER JOIN nr.historiaClinica hc " +
     "INNER JOIN hc.paciente p "+
-    "WHERE p.idPaciente = ?1")
+    "WHERE p.idUsuario = ?1")
     List<NotasReferenciaDto> buscarNotasReferenciaPacientePorId(int idPaciente);
 }

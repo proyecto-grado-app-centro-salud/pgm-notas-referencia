@@ -11,7 +11,7 @@ GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia
 
 
 ###
-GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/paciente/1
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/paciente/2
 
 ###
 GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/info-container
@@ -56,5 +56,4 @@ Content-Type: application/json
       "idHistoriaClinica": 1,
       "idMedico": 1
     }
-###
-GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/detalle-historia-paciente
+

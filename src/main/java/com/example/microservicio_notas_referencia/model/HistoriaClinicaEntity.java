@@ -59,11 +59,11 @@ public class HistoriaClinicaEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_paciente", nullable = false)
-    private PacienteEntity paciente;
+    private UsuarioEntity paciente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_medico", nullable = false)
-    private MedicoEntity medico;
+    private UsuarioEntity medico;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_especialidad", nullable = false)
