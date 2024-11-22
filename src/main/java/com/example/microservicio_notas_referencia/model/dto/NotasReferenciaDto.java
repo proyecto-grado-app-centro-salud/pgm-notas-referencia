@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class NotasReferenciaDto {
     public NotasReferenciaDto(NotasReferenciaEntity notaGuardada) {
-        this.idNotaReferencia=notaGuardada.getIdNotaReferencia();
+        this.id=notaGuardada.getIdNotaReferencia();
         this.datosClinicos=notaGuardada.getDatosClinicos();
         this.datosIngreso=notaGuardada.getDatosIngreso();
         this.datosEgreso=notaGuardada.getDatosEgreso();
@@ -30,18 +30,17 @@ public class NotasReferenciaDto {
         this.idHistoriaClinica=notaGuardada.getHistoriaClinica().getIdHistoriaClinica();
         this.ciPropietario=notaGuardada.getHistoriaClinica().getPaciente().getCi();
         this.pacientePropietario=notaGuardada.getHistoriaClinica().getPaciente().getNombres()+" "+notaGuardada.getHistoriaClinica().getPaciente().getApellidoPaterno()+" "+notaGuardada.getHistoriaClinica().getPaciente().getApellidoMaterno();
-        this.idPropietario=notaGuardada.getHistoriaClinica().getPaciente().getIdUsuario();
+        this.idPaciente=notaGuardada.getHistoriaClinica().getPaciente().getIdUsuario();
         this.idMedico=notaGuardada.getMedico().getIdUsuario();
         this.diagnosticoPresuntivo=notaGuardada.getHistoriaClinica().getDiagnosticoPresuntivo();
         this.idEspecialidad=notaGuardada.getHistoriaClinica().getEspecialidad().getIdEspecialidad();
         this.nombreEspecialidad=notaGuardada.getHistoriaClinica().getEspecialidad().getNombre();
         this.nombreMedico=notaGuardada.getHistoriaClinica().getMedico().getNombres()+" "+notaGuardada.getHistoriaClinica().getMedico().getApellidoPaterno()+" "+notaGuardada.getHistoriaClinica().getMedico().getApellidoMaterno();
-        this.idPaciente=notaGuardada.getHistoriaClinica().getPaciente().getIdUsuario();
         this.createdAt=notaGuardada.getCreatedAt();
         this.updatedAt=notaGuardada.getUpdatedAt();
         this.deletedAt=notaGuardada.getDeletedAt();
     }
-    private int idNotaReferencia;
+    private Integer id;
     private String datosClinicos;
     private String datosIngreso;
     private String datosEgreso;
@@ -55,19 +54,18 @@ public class NotasReferenciaDto {
     private String monitoreo;
     private String informeTrabajoSocial;
     private int idHistoriaClinica;
-    private String ciPropietario;
-    private String pacientePropietario;
-    private int idPropietario;
-    private int idMedico;
-    private Date createdAt;
-    private Date updatedAt;
-    private Date deletedAt;
-
     private String diagnosticoPresuntivo;
     private Integer idEspecialidad;
     private String nombreEspecialidad;
+    private int idMedico;
     private String nombreMedico;
-    private Integer idPaciente;
+    private int idPaciente;
+    private String ciPropietario;
+    private String pacientePropietario;
+    
+    private Date createdAt;
+    private Date updatedAt;
+    private Date deletedAt;
     
     public NotasReferenciaDto(Integer idNotaReferencia, String datosClinicos, String datosIngreso, String datosEgreso,
             String condicionesPacienteMomentoTransferencia, String informeProcedimientosRealizados,
@@ -75,7 +73,7 @@ public class NotasReferenciaDto {
             String advertenciasFactoresRiesgo, String comentarioAdicional, String monitoreo,
             String informeTrabajoSocial,int idHistoriaClinica,String ciPropietario,String nombres,int idPaciente,int idMedico,
             Date createdAt,Date updatedAt) {
-        this.idNotaReferencia = idNotaReferencia;
+        this.id = idNotaReferencia;
         this.datosClinicos = datosClinicos;
         this.datosIngreso = datosIngreso;
         this.datosEgreso = datosEgreso;
@@ -91,7 +89,7 @@ public class NotasReferenciaDto {
         this.idHistoriaClinica=idHistoriaClinica;
         this.ciPropietario=ciPropietario;
         this.pacientePropietario=nombres;
-        this.idPropietario=idPaciente;
+        this.idPaciente=idPaciente;
         this.idMedico=idMedico;
         this.createdAt=createdAt;
         this.updatedAt=updatedAt;

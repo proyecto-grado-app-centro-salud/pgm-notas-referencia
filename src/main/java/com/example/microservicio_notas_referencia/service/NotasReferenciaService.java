@@ -21,7 +21,8 @@ public class NotasReferenciaService {
     UsuariosRepositoryJPA usuarioRepositoryJPA;
     @Autowired
     NotasReferenciaRepository notasReferenciaRepository;
-
+    @Autowired
+    PDFService pdfService;
 
     public NotasReferenciaDto guardarNotaReferencia(NotasReferenciaDto notasReferenciaDto){
         NotasReferenciaEntity notasReferenciaEntity=new NotasReferenciaEntity();
@@ -67,5 +68,15 @@ public class NotasReferenciaService {
         notaReferencia.setUpdatedAt(new Date());
         NotasReferenciaEntity nuevo = notasReferenciaRepository.save(notaReferencia);
         return new NotasReferenciaDto(nuevo);
+    }
+
+
+    public byte[] obtenerPDFNotaReferencia(NotasReferenciaDto notaReferenciaDto) {
+        try {
+            return pdfService.generarPdfReporteNotaReferencia(notaReferenciaDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error al generar el PDF de la historia clinica.", e);
+        }
     }
 }

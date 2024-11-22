@@ -1,10 +1,15 @@
 package com.example.microservicio_notas_referencia.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +30,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("notas-referencia")
 public class NotasReferenciaController {
@@ -74,5 +78,20 @@ public class NotasReferenciaController {
         NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
         return  notasReferenciaDto;
     }
+    @GetMapping("/pdf")
+    public ResponseEntity<byte[]> obtenerPDFDeNotaReferencia(NotasReferenciaDto notaReferenciaDto) {
+        try {
+            byte[] pdfBytes = notasReferenciaService.obtenerPDFNotaReferencia(notaReferenciaDto);
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Disposition", "inline; filename=NotaEvolucion.pdf");
+            headers.add("Content-Type", "application/pdf");
+            headers.add("Content-Length", "" + pdfBytes.length);
 
+            return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        }
+    }
 }
