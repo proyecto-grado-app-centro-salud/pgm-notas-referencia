@@ -7,10 +7,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,15 +58,15 @@ public class NotasReferenciaController {
     
     @GetMapping("/{idNotaReferencia}")
     public @ResponseBody NotasReferenciaDto obtenerDetalleNotaReferencia(@PathVariable int idNotaReferencia) {
-        return notasReferenciaRepository.buscarNotaReferenciaPorId(idNotaReferencia);
+        return notasReferenciaService.buscarNotaReferenciaPorId(idNotaReferencia);
     }
     @GetMapping("/paciente/{idPaciente}")
-    public @ResponseBody List<NotasReferenciaDto> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente) {
-        return notasReferenciaRepository.buscarNotasReferenciaPacientePorId(idPaciente);
+    public @ResponseBody Page<NotasReferenciaDto> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente,@RequestParam(required = false) String fechaInicio, @RequestParam(required = false) String fechaFin,@RequestParam(required = false) String nombreMedico,@RequestParam(required = false) String nombreEspecialidad,@RequestParam(required = false) String diagnosticoPresuntivo,@RequestParam(required = false) Integer page,@RequestParam(required = false) Integer size) {
+        return notasReferenciaService.buscarNotasReferenciaPacientePorId(idPaciente,fechaInicio,fechaFin,nombreMedico,nombreEspecialidad,diagnosticoPresuntivo,page,size);
     }
     @GetMapping()
-    public @ResponseBody List<NotasReferenciaDto> obtenerTodasNotasReferencia() {
-        return notasReferenciaRepository.buscarNotasReferencia();
+    public @ResponseBody Page<NotasReferenciaDto> obtenerTodasNotasReferencia(@RequestParam(required = false) String fechaInicio, @RequestParam(required = false) String fechaFin,@RequestParam(required = false) String ciPaciente,@RequestParam(required = false) String nombrePaciente,@RequestParam(required = false) String nombreMedico,@RequestParam(required = false) String nombreEspecialidad,@RequestParam(required = false) String diagnosticoPresuntivo,@RequestParam(required = false) Integer page,@RequestParam(required = false) Integer size) {
+        return notasReferenciaService.buscarNotasReferencia(fechaInicio,fechaFin,ciPaciente,nombrePaciente,nombreMedico,nombreEspecialidad,diagnosticoPresuntivo,page,size);
     }
    
 
@@ -92,6 +94,16 @@ public class NotasReferenciaController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        }
+    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        try{
+            notasReferenciaService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -13,6 +13,36 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NotasReferenciaDto {
+    public static NotasReferenciaDto convetirNotasReferenciaEntityNotasReferenciaDto(NotasReferenciaEntity notaGuardada){
+        NotasReferenciaDto notasReferenciaDto=new NotasReferenciaDto();
+        notasReferenciaDto.id=notaGuardada.getIdNotaReferencia();
+        notasReferenciaDto.datosClinicos=notaGuardada.getDatosClinicos();
+        notasReferenciaDto.datosIngreso=notaGuardada.getDatosIngreso();
+        notasReferenciaDto.datosEgreso=notaGuardada.getDatosEgreso();
+        notasReferenciaDto.condicionesPacienteMomentoTransferencia=notaGuardada.getCondicionesPacienteMomentoTransferencia();
+        notasReferenciaDto.informeProcedimientosRealizados=notaGuardada.getInformeProcedimientosRealizados();
+        notasReferenciaDto.tratamientoEfectuado=notaGuardada.getTratamientoEfectuado();
+        notasReferenciaDto.tratamientoPersistePaciente=notaGuardada.getTratamientoPersistePaciente();
+        notasReferenciaDto.fechaVencimiento=notaGuardada.getFechaVencimiento();
+        notasReferenciaDto.advertenciasFactoresRiesgo=notaGuardada.getAdvertenciasFactoresRiesgo();
+        notasReferenciaDto.comentarioAdicional=notaGuardada.getComentarioAdicional();
+        notasReferenciaDto.monitoreo=notaGuardada.getMonitoreo();
+        notasReferenciaDto.informeTrabajoSocial=notaGuardada.getInformeTrabajoSocial();
+        notasReferenciaDto.idHistoriaClinica=notaGuardada.getHistoriaClinica().getIdHistoriaClinica();
+        notasReferenciaDto.ciPropietario=notaGuardada.getHistoriaClinica().getPaciente().getCi();
+        notasReferenciaDto.pacientePropietario=notaGuardada.getHistoriaClinica().getPaciente().getNombres()+" "+notaGuardada.getHistoriaClinica().getPaciente().getApellidoPaterno()+" "+notaGuardada.getHistoriaClinica().getPaciente().getApellidoMaterno();
+        notasReferenciaDto.idPaciente=notaGuardada.getHistoriaClinica().getPaciente().getIdUsuario();
+        notasReferenciaDto.idMedico=notaGuardada.getMedico().getIdUsuario();
+        notasReferenciaDto.diagnosticoPresuntivo=notaGuardada.getHistoriaClinica().getDiagnosticoPresuntivo();
+        notasReferenciaDto.idEspecialidad=notaGuardada.getHistoriaClinica().getEspecialidad().getIdEspecialidad();
+        notasReferenciaDto.nombreEspecialidad=notaGuardada.getHistoriaClinica().getEspecialidad().getNombre();
+        notasReferenciaDto.nombreMedico=notaGuardada.getHistoriaClinica().getMedico().getNombres()+" "+notaGuardada.getHistoriaClinica().getMedico().getApellidoPaterno()+" "+notaGuardada.getHistoriaClinica().getMedico().getApellidoMaterno();
+        notasReferenciaDto.createdAt=notaGuardada.getCreatedAt();
+        notasReferenciaDto.updatedAt=notaGuardada.getUpdatedAt();
+        notasReferenciaDto.deletedAt=notaGuardada.getDeletedAt();
+
+        return notasReferenciaDto;
+    }
     public NotasReferenciaDto(NotasReferenciaEntity notaGuardada) {
         this.id=notaGuardada.getIdNotaReferencia();
         this.datosClinicos=notaGuardada.getDatosClinicos();

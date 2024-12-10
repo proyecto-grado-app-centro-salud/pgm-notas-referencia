@@ -7,11 +7,11 @@ GET http://localhost:8094/api/microservicio-notas-referencia/manage/health
 GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/1
 
 ###
-GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia
+GET http://localhost:8081/api/microservicio-notas-referencia/notas-referencia
 
 
 ###
-GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/paciente/2
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/paciente/1
 
 ###
 GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/info-container
@@ -34,14 +34,34 @@ Content-Type: application/json
       "monitoreo": "Control de dolor y signos de infección cada 8 horas.",
       "informeTrabajoSocial": "Paciente vive con familia que le brindará apoyo en la recuperación.",
       "idHistoriaClinica": 1,
-      "idMedico": 1
+      "idMedico": 8490543
     }
 ###
-PUT http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/5
+GET http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/pdf
 Content-Type: application/json
 
 {
-      "datosClinicos": "Paciente con fractura de tibia. actualizado",
+      "datosClinicos": "Paciente con fractura de tibia.",
+      "datosIngreso": "Ingresado después de accidente automovilístico.",
+      "datosEgreso": "Egresado después de cirugía de reducción abierta y fijación interna.",
+      "condicionesPacienteMomentoTransferencia": "Estable, con yeso en la pierna.",
+      "informeProcedimientosRealizados": "Cirugía de reducción abierta y fijación interna.",
+      "tratamientoEfectuado": "Analgesia postoperatoria y antibióticos.",
+      "tratamientoPersistePaciente": "Rehabilitación y fisioterapia.",
+      "fechaVencimiento": "2024-11-20",
+      "advertenciasFactoresRiesgo": "Evitar apoyar peso en la pierna por 6 semanas.",
+      "comentarioAdicional": "Revisar en consulta externa en 10 días.",
+      "monitoreo": "Control de dolor y signos de infección cada 8 horas.",
+      "informeTrabajoSocial": "Paciente vive con familia que le brindará apoyo en la recuperación.",
+      "idHistoriaClinica": 1,
+      "idMedico": 8490543
+    }
+###
+PUT http://localhost:8094/api/microservicio-notas-referencia/notas-referencia/1
+Content-Type: application/json
+
+{
+      "datosClinicos": "Paciente con fractura de tibia grave.",
       "datosIngreso": "Ingresado después de accidente automovilístico.",
       "datosEgreso": "Egresado después de cirugía de reducción abierta y fijación interna.",
       "condicionesPacienteMomentoTransferencia": "Estable, con yeso en la pierna.",
