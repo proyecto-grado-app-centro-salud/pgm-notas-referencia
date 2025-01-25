@@ -1,30 +1,37 @@
 package com.example.microservicio_notas_referencia.model;
 
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.List;
-
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "historias_clinicas")
 public class HistoriaClinicaEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_historia_clinica")
     private int idHistoriaClinica;
     @Column(name = "condiciones_actuales_estado_salud_enfermedad")
@@ -51,11 +58,6 @@ public class HistoriaClinicaEntity {
     private String propuestaBasicaDeConducta;
     @Column(name = "tratamiento")
     private String tratamiento;
-    // @Column(name = "id_paciente",insertable=false, updatable=false)
-    // private String idPaciente;
-    // @ManyToOne(fetch = FetchType.EAGER)
-    // @JoinColumn(name = "id_paciente")
-    // private PacienteEntity paciente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_paciente", nullable = false)
@@ -64,14 +66,36 @@ public class HistoriaClinicaEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_medico", nullable = false)
     private UsuarioEntity medico;
-
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_especialidad", nullable = false)
     private EspecialidadesEntity especialidad;
-    // @Column(name = "id_paciente")
-    // private int idPaciente;
-    @OneToMany(mappedBy = "historiaClinica", fetch = FetchType.LAZY)
-    private List<NotasReferenciaEntity> referencias;
+  
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "deleted_at")
+    private Date deletedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+        updatedAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Date();
+    }
+
+    public void markAsDeleted() {
+        deletedAt = new Date();
+    }
 
 }

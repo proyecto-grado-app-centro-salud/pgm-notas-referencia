@@ -20,6 +20,8 @@ import com.example.microservicio_notas_referencia.repository.NotasReferenciaRepo
 import com.example.microservicio_notas_referencia.repository.UsuariosRepositoryJPA;
 import com.example.microservicio_notas_referencia.util.NotasReferenciaSpecification;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class NotasReferenciaService {
     @Autowired
@@ -46,9 +48,9 @@ public class NotasReferenciaService {
         notasReferenciaEntity.setComentarioAdicional(notasReferenciaDto.getComentarioAdicional());
         notasReferenciaEntity.setMonitoreo(notasReferenciaDto.getMonitoreo());
         notasReferenciaEntity.setInformeTrabajoSocial(notasReferenciaDto.getInformeTrabajoSocial());
-        HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findById(notasReferenciaDto.getIdHistoriaClinica()).orElseThrow();
+        HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findByIdHistoriaClinicaAndDeletedAtIsNull(notasReferenciaDto.getIdHistoriaClinica()).orElseThrow();
         notasReferenciaEntity.setHistoriaClinica(historiaClinicaEntity);
-        UsuarioEntity medicoEntity=usuarioRepositoryJPA.findById(notasReferenciaDto.getIdMedico()).orElseThrow();
+        UsuarioEntity medicoEntity=usuarioRepositoryJPA.findByIdUsuarioAndDeletedAtIsNull(notasReferenciaDto.getIdMedico()).orElseThrow();
         notasReferenciaEntity.setMedico(medicoEntity);
         NotasReferenciaEntity notaGuardada=notasReferenciaRepository.save(notasReferenciaEntity);
         return new NotasReferenciaDto(notaGuardada);
@@ -69,9 +71,9 @@ public class NotasReferenciaService {
         notaReferencia.setComentarioAdicional(actualizada.getComentarioAdicional());
         notaReferencia.setMonitoreo(actualizada.getMonitoreo());
         notaReferencia.setInformeTrabajoSocial(actualizada.getInformeTrabajoSocial());
-        UsuarioEntity medicoEntity=usuarioRepositoryJPA.findById(actualizada.getIdMedico()).orElseThrow();
+        UsuarioEntity medicoEntity=usuarioRepositoryJPA.findByIdUsuarioAndDeletedAtIsNull(actualizada.getIdMedico()).orElseThrow();
         notaReferencia.setMedico(medicoEntity);
-        HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findById(actualizada.getIdHistoriaClinica()).orElseThrow();
+        HistoriaClinicaEntity historiaClinicaEntity=historiaClinicaRepository.findByIdHistoriaClinicaAndDeletedAtIsNull(actualizada.getIdHistoriaClinica()).orElseThrow();
         notaReferencia.setHistoriaClinica(historiaClinicaEntity);
         notaReferencia.setUpdatedAt(new Date());
         NotasReferenciaEntity nuevo = notasReferenciaRepository.save(notaReferencia);
@@ -131,6 +133,11 @@ public class NotasReferenciaService {
     public NotasReferenciaDto buscarNotaReferenciaPorId(int idNotaReferencia) {
         NotasReferenciaEntity notaReferencia=notasReferenciaRepository.findByIdNotaReferenciaAndDeletedAtIsNull(idNotaReferencia).orElseThrow();
         return new NotasReferenciaDto().convetirNotasReferenciaEntityNotasReferenciaDto(notaReferencia);
+    }
+
+    @Transactional
+    public void deleteNotasReferenciaDeHistoriaClinica(int idHistoriaClinica) {
+        notasReferenciaRepository.markAsDeletedAllNotasReferenciaFromHistoriaClinica(idHistoriaClinica,new Date());
     }
     
 }

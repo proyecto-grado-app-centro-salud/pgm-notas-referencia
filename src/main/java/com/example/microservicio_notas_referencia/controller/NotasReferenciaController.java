@@ -28,6 +28,8 @@ import com.example.microservicio_notas_referencia.repository.NotasReferenciaRepo
 import com.example.microservicio_notas_referencia.service.ContainerMetadataService;
 import com.example.microservicio_notas_referencia.service.NotasReferenciaService;
 
+import jakarta.annotation.security.PermitAll;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -57,30 +59,36 @@ public class NotasReferenciaController {
 
     
     @GetMapping("/{idNotaReferencia}")
+    @PermitAll
     public @ResponseBody NotasReferenciaDto obtenerDetalleNotaReferencia(@PathVariable int idNotaReferencia) {
         return notasReferenciaService.buscarNotaReferenciaPorId(idNotaReferencia);
     }
     @GetMapping("/paciente/{idPaciente}")
+    @PermitAll
     public @ResponseBody Page<NotasReferenciaDto> obtenerNotasReferenciaPaciente(@PathVariable int idPaciente,@RequestParam(required = false) String fechaInicio, @RequestParam(required = false) String fechaFin,@RequestParam(required = false) String nombreMedico,@RequestParam(required = false) String nombreEspecialidad,@RequestParam(required = false) String diagnosticoPresuntivo,@RequestParam(required = false) Integer page,@RequestParam(required = false) Integer size) {
         return notasReferenciaService.buscarNotasReferenciaPacientePorId(idPaciente,fechaInicio,fechaFin,nombreMedico,nombreEspecialidad,diagnosticoPresuntivo,page,size);
     }
     @GetMapping()
+    @PermitAll
     public @ResponseBody Page<NotasReferenciaDto> obtenerTodasNotasReferencia(@RequestParam(required = false) String fechaInicio, @RequestParam(required = false) String fechaFin,@RequestParam(required = false) String ciPaciente,@RequestParam(required = false) String nombrePaciente,@RequestParam(required = false) String nombreMedico,@RequestParam(required = false) String nombreEspecialidad,@RequestParam(required = false) String diagnosticoPresuntivo,@RequestParam(required = false) Integer page,@RequestParam(required = false) Integer size) {
         return notasReferenciaService.buscarNotasReferencia(fechaInicio,fechaFin,ciPaciente,nombrePaciente,nombreMedico,nombreEspecialidad,diagnosticoPresuntivo,page,size);
     }
    
 
     @PostMapping()
+    @PermitAll
     public @ResponseBody NotasReferenciaDto registrarNotaReferencia(@RequestBody NotasReferenciaDto nuevo){
         NotasReferenciaDto notasReferenciaDto=notasReferenciaService.guardarNotaReferencia(nuevo);
         return notasReferenciaDto;        
     }
     @PutMapping("/{id}")
+    @PermitAll
     public @ResponseBody NotasReferenciaDto actualizarNotaReferencia(@PathVariable int id, @RequestBody NotasReferenciaDto actualizada) {
         NotasReferenciaDto notasReferenciaDto=notasReferenciaService.actualizarNotaReferencia(id,actualizada);
         return  notasReferenciaDto;
     }
     @GetMapping("/pdf")
+    @PermitAll
     public ResponseEntity<byte[]> obtenerPDFDeNotaReferencia(NotasReferenciaDto notaReferenciaDto) {
         try {
             byte[] pdfBytes = notasReferenciaService.obtenerPDFNotaReferencia(notaReferenciaDto);
@@ -97,9 +105,21 @@ public class NotasReferenciaController {
         }
     }
     @DeleteMapping(value = "/{id}")
+    @PermitAll
     public ResponseEntity<Void> delete(@PathVariable int id) {
         try{
             notasReferenciaService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @DeleteMapping(value = "/historia-clinica/{id}")
+    @PermitAll
+    public ResponseEntity<Void> deleteNotasReferenciaDeHistoriaClinica(@PathVariable int id) {
+        try{
+            notasReferenciaService.deleteNotasReferenciaDeHistoriaClinica(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

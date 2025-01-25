@@ -1,10 +1,12 @@
 package com.example.microservicio_notas_referencia.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.example.microservicio_notas_referencia.model.NotasReferenciaEntity;
@@ -43,4 +45,8 @@ public interface NotasReferenciaRepository extends JpaRepository<NotasReferencia
     List<NotasReferenciaDto> buscarNotasReferenciaPacientePorId(int idPaciente);
 
     Optional<NotasReferenciaEntity> findByIdNotaReferenciaAndDeletedAtIsNull(int idNotaReferencia);
+
+    @Modifying
+    @Query(value = "UPDATE notas_referencia SET deleted_at = ?2 WHERE id_historia_clinica = ?1", nativeQuery = true)
+    void markAsDeletedAllNotasReferenciaFromHistoriaClinica(int idHistoriaClinica, Date date);
 }

@@ -29,6 +29,9 @@
 	<parameter name="nombreCompletoPaciente" class="java.lang.String"/>
 	<detail>
 		<band height="36">
+			<element kind="image" uuid="c970f5b3-f369-416e-a84b-31ce175149a3" x="445" y="0" width="35" height="30">
+				<expression><![CDATA[$P{IMAGE_PATH}]]></expression>
+			</element>
 			<element kind="staticText" uuid="10563923-6b66-43f5-a075-411f5e6b111c" x="0" y="0" width="360" height="30" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
 				<text><![CDATA[HOSPITAL CLINICO]]></text>
 			</element>
@@ -150,116 +153,116 @@
 				<pen lineWidth="2.0"/>
 			</element>
 		</band>
-		<band height="525">
-			<element kind="staticText" uuid="69807dce-685d-4085-9557-6c1505a09f10" positionType="Float" stretchType="NoStretch" x="0" y="0" width="515" height="38" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+		<band height="500">
+			<element kind="staticText" uuid="69807dce-685d-4085-9557-6c1505a09f10" stretchType="ElementGroupHeight" x="0" y="0" width="515" height="16" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
 				<text><![CDATA[NOTA DE REFERENCIA]]></text>
 				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			</element>
-			<element kind="staticText" uuid="f198ee49-d918-495f-88ed-81a814c49424" positionType="Float" x="0" y="38" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="f198ee49-d918-495f-88ed-81a814c49424" x="0" y="16" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Datos clinicos]]></text>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="86c838e0-48c0-41b8-a974-0ea88b6dff9d" positionType="Float" x="0" y="59" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="86c838e0-48c0-41b8-a974-0ea88b6dff9d" x="0" y="32" width="515" height="24">
 				<expression><![CDATA[$P{datosClinicos}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="5819e3bb-bd78-4060-a614-4547d04028cd" positionType="Float" x="0" y="80" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="5819e3bb-bd78-4060-a614-4547d04028cd" x="0" y="56" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Datos de ingreso]]></text>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="b5389895-b608-4805-9732-c98558be1b0e" positionType="Float" x="0" y="101" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="b5389895-b608-4805-9732-c98558be1b0e" x="0" y="68" width="515" height="24">
 				<expression><![CDATA[$P{datosDeIngreso}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="b03f7022-63c1-499b-b7e9-062ac7bf225b" positionType="Float" x="0" y="122" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="b03f7022-63c1-499b-b7e9-062ac7bf225b" x="0" y="92" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Datos de egreso]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="fce7feae-825f-4e59-bdc6-386c696378e5" positionType="Float" x="0" y="143" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="fce7feae-825f-4e59-bdc6-386c696378e5" x="0" y="104" width="515" height="24">
 				<expression><![CDATA[$P{datosDeEgreso}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="7a5cd4b3-4254-4d51-a3f5-88ea4ec1bd9b" positionType="Float" x="0" y="164" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="7a5cd4b3-4254-4d51-a3f5-88ea4ec1bd9b" x="0" y="128" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Condiciones del paciente al momento de la transferencia]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="ed7de3f2-5c25-4d4c-a61b-42e4fc3b49e8" positionType="Float" x="0" y="185" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="ed7de3f2-5c25-4d4c-a61b-42e4fc3b49e8" x="0" y="140" width="515" height="24">
 				<expression><![CDATA[$P{condicionesDelPaciente}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="6f056ada-73a9-498e-bab2-7c7ad02f2886" positionType="Float" x="0" y="206" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="6f056ada-73a9-498e-bab2-7c7ad02f2886" x="0" y="164" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Informe de procedimientos realizados]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="7b4a62ae-831a-417f-897a-08f2748b5d9e" positionType="Float" x="0" y="227" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="7b4a62ae-831a-417f-897a-08f2748b5d9e" x="0" y="176" width="515" height="24">
 				<expression><![CDATA[$P{informeDeProcedimientos}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="cdf1fd49-a1bf-420a-9d6d-84d01d7553b4" positionType="Float" x="0" y="248" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="cdf1fd49-a1bf-420a-9d6d-84d01d7553b4" x="0" y="200" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Tratamiento efectuado]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="f25c02a3-4226-43d7-85fa-64b7c977ef02" positionType="Float" x="0" y="269" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="f25c02a3-4226-43d7-85fa-64b7c977ef02" x="0" y="212" width="515" height="24">
 				<expression><![CDATA[$P{tratamientoEfectuado}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="4e8805bc-67f1-4b50-803d-e5f0961856d3" positionType="Float" x="0" y="290" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="4e8805bc-67f1-4b50-803d-e5f0961856d3" x="0" y="236" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Tratamiento con el que persiste el paciente]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="b58066cd-1c76-4e8f-b5ae-fa18aee77d6f" positionType="Float" x="0" y="311" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="b58066cd-1c76-4e8f-b5ae-fa18aee77d6f" x="0" y="248" width="515" height="24">
 				<expression><![CDATA[$P{tratamiento}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="4e8805bc-67f1-4b50-803d-e5f0961856d3" positionType="Float" x="0" y="332" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="4e8805bc-67f1-4b50-803d-e5f0961856d3" x="0" y="272" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Advertencia sobre factores de riesgo]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="b58066cd-1c76-4e8f-b5ae-fa18aee77d6f" positionType="Float" x="0" y="353" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="b58066cd-1c76-4e8f-b5ae-fa18aee77d6f" x="0" y="284" width="515" height="24">
 				<expression><![CDATA[$P{advertenciasSobreFactores}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="b68e4feb-f571-4c6b-8cd6-977e98ffc9d5" positionType="Float" x="0" y="374" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="b68e4feb-f571-4c6b-8cd6-977e98ffc9d5" x="0" y="308" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Comentario adicional]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="44864343-5ecf-4a3b-a602-95011b98598f" positionType="Float" x="0" y="395" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="44864343-5ecf-4a3b-a602-95011b98598f" x="0" y="320" width="515" height="24">
 				<expression><![CDATA[$P{comentarioAdicional}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="bb36030d-4d05-4bd6-a3f1-2bfcd719ca70" positionType="Float" x="0" y="416" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="bb36030d-4d05-4bd6-a3f1-2bfcd719ca70" x="0" y="344" width="515" height="12" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Monitoreo]]></text>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			</element>
-			<element kind="textField" uuid="e570f9d9-0418-4bae-aba2-7d7324e5bffd" positionType="Float" x="0" y="437" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="e570f9d9-0418-4bae-aba2-7d7324e5bffd" x="0" y="356" width="515" height="24">
 				<expression><![CDATA[$P{monitoreo}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
 			</element>
-			<element kind="staticText" uuid="3675db3f-512f-486a-be75-d65b19650dc5" positionType="Float" x="0" y="458" width="515" height="21" bold="true" vTextAlign="Middle">
+			<element kind="staticText" uuid="3675db3f-512f-486a-be75-d65b19650dc5" x="0" y="380" width="515" height="16" bold="true" vTextAlign="Middle">
 				<text><![CDATA[Informe de trabajo social]]></text>
 				<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 			</element>
-			<element kind="textField" uuid="e2200ddf-2e5a-413d-a1f3-47d35e4ce0e9" positionType="Float" x="0" y="479" width="515" height="21" textAdjust="StretchHeight">
+			<element kind="textField" uuid="e2200ddf-2e5a-413d-a1f3-47d35e4ce0e9" x="0" y="396" width="515" height="32">
 				<expression><![CDATA[$P{informeTrabajoSocial}]]></expression>
 				<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				<box padding="2"/>
